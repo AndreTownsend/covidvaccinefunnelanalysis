@@ -4,23 +4,9 @@ COVID-19 Vaccine Adverse Events — Funnel Analysis
 CDC VAERS Data | Dec 2020 – Dec 2023 | Python · SQL · Power BI
 Andre Townsend, MBA · Data Analytics Portfolio
 
-📋 Table of Contents
 
 Executive Summary
 
-Business Problem
-Methodology
-Skills Demonstrated
-Results & Findings
-Business Insights
-Next Steps
-How to Run
-Power BI Setup
-Data Dictionary
-Disclaimer
-
-
-Executive Summary
 This project performs a full-stack funnel analysis of COVID-19 vaccine adverse event reports
 submitted to the CDC's Vaccine Adverse Event Reporting System (VAERS) between
 December 2020 and December 2023 — covering the rollout of Pfizer-BioNTech, Moderna,
@@ -39,7 +25,7 @@ incidence database.
 
 
 Business Problem
-Context
+
 Between December 2020 and March 2023, more than 672 million doses of COVID-19 vaccines
 were administered in the United States alone. As the largest mass vaccination campaign in
 modern history, it generated an unprecedented volume of adverse event reports — roughly
@@ -73,7 +59,7 @@ Consulting firms — healthcare analytics engagements
 
 
 Methodology
-Data Source
+
 AttributeDetailSystemVAERS (Vaccine Adverse Event Reporting System)Managed byCDC & FDATime PeriodDecember 14, 2020 — December 31, 2023Universe~900,522 COVID-19 VAERS reports (2020–2022, per NCBI study)Sample Used150,000 representative recordsPublic Accessvaers.hhs.gov / CDC WonderSupporting DataMMWR Weekly Reports, NCBI PMC studies (cited inline)
 All statistical proportions in the simulated dataset are calibrated to published,
 peer-reviewed VAERS analyses:
@@ -100,6 +86,7 @@ Analytical Pipeline
 │                                   - Regional                          │
 └──────────────────────────────────────────────────────────────────────┘
 Funnel Design
+
 The severity funnel follows the official VAERS outcome classification:
   ████████████████████████████████████████  ALL REPORTS (100%)
          │
@@ -125,6 +112,7 @@ Eight SQL queries were written using SQLite (embedded in Python, no additional s
 Query #PurposeOutput TableQ1Severity funnel (stage counts)funnel_dfQ2Reports by vaccine brandvaccine_dfQ3Age group × severity breakdownage_dfQ4Top 10 symptom categoriessymptom_dfQ5Monthly report trendtrend_dfQ6Sex distributionsex_dfQ7Dose-level funneldose_dfQ8Regional distributionregion_df
 
 Skills Demonstrated
+
 ┌─────────────────────┬──────────────────────────────────────────────┐
 │ Skill Category      │ Specific Application                         │
 ├─────────────────────┼──────────────────────────────────────────────┤
@@ -157,6 +145,7 @@ Skills Demonstrated
 └─────────────────────┴──────────────────────────────────────────────┘
 
 Results & Findings
+
 Finding 1 — The Severity Funnel
 The vast majority of adverse events are non-serious and self-limiting.
 SEVERITY FUNNEL  |  N = 150,000 Reports
@@ -324,7 +313,9 @@ Hospitalizations (combined 65–79 + 80+ = ~28% of hosp. despite 24% of reports)
 Deaths (mean age at death in CDC VAERS data = 73 years)
 Longer symptom onset-to-report gaps (3.3–3.6 days vs. 2.8–2.9 for younger cohorts)
 
-Recommendation: Health systems should implement age-stratified post-vaccination
+Recommendation
+
+Health systems should implement age-stratified post-vaccination
 monitoring protocols — particularly for patients 65+ with comorbidities including
 hypertension (26.4% of death reports, per NCBI PMC9016134) and cancer (16.1%).
 Insight 3 — Reporting Efficiency Gap
@@ -344,7 +335,7 @@ Informing bivalent booster communication campaigns
 
 
 Next Steps
-Immediate Analytical Extensions
+
 PriorityNext StepTools Needed🔴 HighLink to actual CDC VAERS download filesvaers.hhs.gov API🔴 HighAdd MedDRA preferred term codingPython / SNOMED CT🟡 MedDisproportionality analysis (PRR/ROR)Python / SciPy🟡 MedSurvival analysis (time-to-serious AE)Python lifelines pkg🟡 MedGeographic choropleth mapFolium / Power BI Maps🟢 LowNLP symptom extraction from free textspaCy / HuggingFace🟢 LowCompare COVID vs. flu vaccine AE ratesAdditional VAERS data
 How to Get the Real CDC VAERS Data
 python# ── STEP 1: Download from official CDC VAERS site
@@ -384,6 +375,7 @@ Dashboard Automation: Schedule Python script to ingest new quarterly VAERS relea
 
 
 How to Run
+
 Option A — Google Colab (Recommended)
 1. Go to: https://colab.research.google.com
 2. File → Upload notebook  →  upload  covid_vaers_funnel_analysis.py
