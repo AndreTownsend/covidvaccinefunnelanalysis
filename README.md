@@ -5,7 +5,7 @@ CDC VAERS Data | Dec 2020 – Dec 2023 | Python · SQL · Power BI
 Andre Townsend, MBA · Data Analytics Portfolio
 
 
-Executive Summary
+## Executive Summary
 
 This project performs a full-stack funnel analysis of COVID-19 vaccine adverse event reports
 submitted to the CDC's Vaccine Adverse Event Reporting System (VAERS) between
