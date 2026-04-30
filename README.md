@@ -1,4 +1,4 @@
-# covidvaccinefunnelanalysis
+# Covid-19 Vaccine Funnel Analysis
 
 COVID-19 Vaccine Adverse Events — Funnel Analysis
 CDC VAERS Data | Dec 2020 – Dec 2023 | Python · SQL · Power BI
