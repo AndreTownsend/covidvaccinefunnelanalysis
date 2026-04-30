@@ -1,3 +1,7 @@
 # covidvaccinefunnelanalysis
-https://github.com/.../blob/.../covid-19 vaccine adverse events-funnelanalysis.pdf
+## 📊 COVID Vaccine Funnel Analysis
+
+![Preview](preview.png)
+
+[📄 View Full Report](https://github.com/AndreTownsend/covidvaccinefunnelanalysis/raw/main/COVID-19 Vaccine Adverse Events — Funnel Analysis.pdf)
 
