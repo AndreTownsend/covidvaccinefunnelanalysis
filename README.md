@@ -7,6 +7,7 @@ Andre Townsend, MBA · Data Analytics Portfolio
 📋 Table of Contents
 
 Executive Summary
+
 Business Problem
 Methodology
 Skills Demonstrated
@@ -19,7 +20,7 @@ Data Dictionary
 Disclaimer
 
 
-#Executive Summary
+Executive Summary
 This project performs a full-stack funnel analysis of COVID-19 vaccine adverse event reports
 submitted to the CDC's Vaccine Adverse Event Reporting System (VAERS) between
 December 2020 and December 2023 — covering the rollout of Pfizer-BioNTech, Moderna,
