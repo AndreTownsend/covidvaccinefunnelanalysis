@@ -12,7 +12,7 @@ submitted to the CDC's Vaccine Adverse Event Reporting System (VAERS) between
 December 2020 and December 2023 — covering the rollout of Pfizer-BioNTech, Moderna,
 Janssen (J&J), and Novavax vaccines across the United States and internationally.
 The core analytical output is a severity funnel that quantifies how a population of
-adverse event reporters progresses from non-serious reactions through ER visits,
+adverse event reporters progress from non-serious reactions through ER visits,
 hospitalizations, life-threatening events, disability, and death. Supporting analyses
 break down adverse events by vaccine brand, dose number, age group, sex, geographic
 region, symptom category, and time.
@@ -24,7 +24,7 @@ The CDC and FDA use VAERS as a signal detection tool — not as a population-lev
 incidence database.
 
 
-Business Problem
+## Business Problem
 
 Between December 2020 and March 2023, more than 672 million doses of COVID-19 vaccines
 were administered in the United States alone. As the largest mass vaccination campaign in
@@ -58,9 +58,9 @@ Public health agencies — population surveillance and communication
 Consulting firms — healthcare analytics engagements
 
 
-Methodology
+##Methodology
 
-AttributeDetailSystemVAERS (Vaccine Adverse Event Reporting System)Managed byCDC & FDATime PeriodDecember 14, 2020 — December 31, 2023Universe~900,522 COVID-19 VAERS reports (2020–2022, per NCBI study)Sample Used150,000 representative recordsPublic Accessvaers.hhs.gov / CDC WonderSupporting DataMMWR Weekly Reports, NCBI PMC studies (cited inline)
+AttributeDetailSystemVAERS (Vaccine Adverse Event Reporting System)Managed byCDC & FDATime PeriodDecember 14, 2020 — December 31, 2023Universe~900,522 COVID-19 VAERS reports (2020–2022, per NCBI study)Sample Used150,000 representative recordsPublic Accessvaers.hhs.gov / CDC Wonder Supporting DataMMWR Weekly Reports, NCBI PMC studies (cited inline)
 All statistical proportions in the simulated dataset are calibrated to published,
 peer-reviewed VAERS analyses:
 
@@ -85,7 +85,7 @@ Analytical Pipeline
 │                                   - Dose level                        │
 │                                   - Regional                          │
 └──────────────────────────────────────────────────────────────────────┘
-Funnel Design
+##Funnel Design
 
 The severity funnel follows the official VAERS outcome classification:
   ████████████████████████████████████████  ALL REPORTS (100%)
@@ -111,7 +111,15 @@ SQL Queries Used
 Eight SQL queries were written using SQLite (embedded in Python, no additional setup):
 Query #PurposeOutput TableQ1Severity funnel (stage counts)funnel_dfQ2Reports by vaccine brandvaccine_dfQ3Age group × severity breakdownage_dfQ4Top 10 symptom categoriessymptom_dfQ5Monthly report trendtrend_dfQ6Sex distributionsex_dfQ7Dose-level funneldose_dfQ8Regional distributionregion_df
 
-Skills Demonstrated
+![Covid Analysis Dashboard](C-V1.png)
+
+![Covid Analysis Dashboard](C-V2.png)
+
+![Covid Analysis Dashboard](C-V3.png)
+
+![Covid Analysis Dashboard](C-V4.png)
+
+## Skills Demonstrated
 
 ┌─────────────────────┬──────────────────────────────────────────────┐
 │ Skill Category      │ Specific Application                         │
@@ -144,7 +152,7 @@ Skills Demonstrated
 │                     │ recommendations tied to data findings         │
 └─────────────────────┴──────────────────────────────────────────────┘
 
-Results & Findings
+## Results & Findings
 
 Finding 1 — The Severity Funnel
 The vast majority of adverse events are non-serious and self-limiting.
@@ -283,7 +291,7 @@ NOTE: Higher female reporting rate is consistent across
       response and healthcare-seeking behavior.
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Business Insights
+## Business Insights
 Insight 1 — Safety Signal Triage Framework
 ┌──────────────────────────────────────────────────────────────────┐
 │  RECOMMENDED TRIAGE FRAMEWORK FOR PHARMACOVIGILANCE TEAMS       │
@@ -313,7 +321,7 @@ Hospitalizations (combined 65–79 + 80+ = ~28% of hosp. despite 24% of reports)
 Deaths (mean age at death in CDC VAERS data = 73 years)
 Longer symptom onset-to-report gaps (3.3–3.6 days vs. 2.8–2.9 for younger cohorts)
 
-Recommendation
+## Recommendation
 
 Health systems should implement age-stratified post-vaccination
 monitoring protocols — particularly for patients 65+ with comorbidities including
@@ -334,7 +342,7 @@ Reducing vaccine hesitancy driven by Dose 2 experiences
 Informing bivalent booster communication campaigns
 
 
-Next Steps
+## Next Steps
 
 PriorityNext StepTools Needed🔴 HighLink to actual CDC VAERS download filesvaers.hhs.gov API🔴 HighAdd MedDRA preferred term codingPython / SNOMED CT🟡 MedDisproportionality analysis (PRR/ROR)Python / SciPy🟡 MedSurvival analysis (time-to-serious AE)Python lifelines pkg🟡 MedGeographic choropleth mapFolium / Power BI Maps🟢 LowNLP symptom extraction from free textspaCy / HuggingFace🟢 LowCompare COVID vs. flu vaccine AE ratesAdditional VAERS data
 How to Get the Real CDC VAERS Data
@@ -374,7 +382,7 @@ Clustering: K-Means on symptom + demographic features to identify high-risk pati
 Dashboard Automation: Schedule Python script to ingest new quarterly VAERS releases and auto-refresh Power BI
 
 
-How to Run
+## How to Run
 
 Option A — Google Colab (Recommended)
 1. Go to: https://colab.research.google.com
@@ -397,7 +405,7 @@ Option C — Jupyter Notebook
 bashpip install jupyter
 jupyter notebook covid_vaers_funnel_analysis.py
 
-Power BI Setup
+## Power BI Setup
 Exported CSV Files
 FileContentsRowspowerbi_vaers_master.csvFull dataset (all 150K records)150,000powerbi_funnel_severity.csvFunnel stage counts + percentages6powerbi_vaccine_brand.csvBy brand: counts, hosp, deaths5powerbi_age_breakdown.csvAge × severity matrix7powerbi_top_symptoms.csvTop 10 symptom categories10powerbi_monthly_trend.csvMonth-by-month report volumes~37powerbi_sex_breakdown.csvSex distribution + serious events3powerbi_dose_funnel.csvDose 1–4 funnel + hosp rates4powerbi_regional.csvRegional distribution + outcomes6
 Recommended Power BI Visuals
@@ -465,10 +473,10 @@ YoY Change % =
         CALCULATE([Total Reports], powerbi_vaers_master[year] = PriorYear)
     ) * 100
 
-Data Dictionary
+## Data Dictionary
 ColumnTypeDescriptionreport_idIntegerUnique VAERS report identifierreport_dateDateDate adverse event was reported to VAERSvaccineStringVaccine brand (Pfizer, Moderna, Janssen, Novavax)doseStringDose number (Dose 1, Dose 2, Booster 1, Booster 2)age_groupStringAge bracket (0-17, 18-29, 30-39, 40-49, 50-64, 65+)sexStringReported sex (Female, Male, Unknown)severityStringVAERS outcome classificationsymptom_catStringSymptom system-organ class (MedDRA-aligned)onset_daysIntegerDays from vaccination to first symptomresolvedStringWhether symptoms resolved (Yes / No / Unknown)regionStringUS region or InternationalhospitalizedBinary1 = hospitalized, 0 = notlife_threatBinary1 = life-threatening event, 0 = notdeathBinary1 = death reported, 0 = noter_visitBinary1 = ER visit, 0 = notyearIntegerReport year (2020–2023)year_monthStringReport year-month (e.g., "2021-06")
 
-Disclaimer
+## Disclaimer
 
 VAERS is a passive, voluntary reporting system managed jointly by the CDC and FDA.
 Reports submitted to VAERS indicate that an adverse event occurred after vaccination —
@@ -478,7 +486,7 @@ as a hypothesis-generating early-warning system, not as definitive evidence of
 causation. All statistics in this analysis are calibrated to published, peer-reviewed
 research. This project is for analytical and portfolio purposes only.
 
-Data Sources:
+## Data Sources:
 
 CDC VAERS: https://vaers.hhs.gov/data.html
 NCBI PMC11287098 — Temporal and Spatial Analysis of VAERS COVID-19 AEs
@@ -487,7 +495,7 @@ CDC MMWR — Safety Monitoring of COVID-19 Vaccine Booster Doses
 CDC.gov — Selected Adverse Events Reported after COVID-19 Vaccination
 
 
-Repository Structure
+## Repository Structure
 portfolio/
 ├── covid_vaers_funnel_analysis.py   ← Main analysis (Google Colab compatible)
 ├── README_vaers_funnel.md           ← This file
